@@ -60,7 +60,7 @@ namespace ContosoUniversity.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseID,Title,Credits,DepartmentID")]Course course)
+        public ActionResult Create([Bind(Include = "CourseID,Title,Credits,DepartmentID,PartnerID")]Course course)
         {
             try
             {
@@ -107,7 +107,7 @@ namespace ContosoUniversity.Controllers
             }
             var courseToUpdate = db.Courses.Find(id);
             if (TryUpdateModel(courseToUpdate, "",
-               new string[] { "Title", "Credits", "DepartmentID" }))
+               new string[] { "Title", "Credits", "DepartmentID", "PartnerID" }))
             {
                 try
                 {

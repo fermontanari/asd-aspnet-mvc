@@ -3,7 +3,7 @@ namespace ContosoUniversity.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class partner : DbMigration
+    public partial class partners : DbMigration
     {
         public override void Up()
         {
@@ -16,16 +16,16 @@ namespace ContosoUniversity.Migrations
                     })
                 .PrimaryKey(t => t.PartnerID);
             
-            AddColumn("dbo.Course", "Partner_PartnerID", c => c.Int());
-            CreateIndex("dbo.Course", "Partner_PartnerID");
-            AddForeignKey("dbo.Course", "Partner_PartnerID", "dbo.Partner", "PartnerID");
+            AddColumn("dbo.Course", "PartnerID", c => c.Int(nullable: false));
+            CreateIndex("dbo.Course", "PartnerID");
+            AddForeignKey("dbo.Course", "PartnerID", "dbo.Partner", "PartnerID", cascadeDelete: true);
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Course", "Partner_PartnerID", "dbo.Partner");
-            DropIndex("dbo.Course", new[] { "Partner_PartnerID" });
-            DropColumn("dbo.Course", "Partner_PartnerID");
+            DropForeignKey("dbo.Course", "PartnerID", "dbo.Partner");
+            DropIndex("dbo.Course", new[] { "PartnerID" });
+            DropColumn("dbo.Course", "PartnerID");
             DropTable("dbo.Partner");
         }
     }

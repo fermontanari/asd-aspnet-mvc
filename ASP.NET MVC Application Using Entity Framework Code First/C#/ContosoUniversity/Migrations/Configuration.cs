@@ -59,49 +59,63 @@ namespace ContosoUniversity.Migrations
 
             var departments = new List<Department>
             {
-                new Department { Name = "English",     Budget = 350000, 
-                    StartDate = DateTime.Parse("2007-09-01"), 
+                new Department { Name = "English",     Budget = 350000,
+                    StartDate = DateTime.Parse("2007-09-01"),
                     InstructorID  = instructors.Single( i => i.LastName == "Abercrombie").ID },
-                new Department { Name = "Mathematics", Budget = 100000, 
-                    StartDate = DateTime.Parse("2007-09-01"), 
+                new Department { Name = "Mathematics", Budget = 100000,
+                    StartDate = DateTime.Parse("2007-09-01"),
                     InstructorID  = instructors.Single( i => i.LastName == "Fakhouri").ID },
-                new Department { Name = "Engineering", Budget = 350000, 
-                    StartDate = DateTime.Parse("2007-09-01"), 
+                new Department { Name = "Engineering", Budget = 350000,
+                    StartDate = DateTime.Parse("2007-09-01"),
                     InstructorID  = instructors.Single( i => i.LastName == "Harui").ID },
-                new Department { Name = "Economics",   Budget = 100000, 
-                    StartDate = DateTime.Parse("2007-09-01"), 
+                new Department { Name = "Economics",   Budget = 100000,
+                    StartDate = DateTime.Parse("2007-09-01"),
                     InstructorID  = instructors.Single( i => i.LastName == "Kapoor").ID }
             };
             departments.ForEach(s => context.Departments.AddOrUpdate(p => p.Name, s));
+            context.SaveChanges();
+
+            var partners = new List<Partner>
+            {
+                new Partner { PartnerID= 1, Name = "Partner 1" }
+            };
+            partners.ForEach(s => context.Partner.AddOrUpdate(p => p.Name, s));
             context.SaveChanges();
 
             var courses = new List<Course>
             {
                 new Course {CourseID = 1050, Title = "Chemistry",      Credits = 3,
                   DepartmentID = departments.Single( s => s.Name == "Engineering").DepartmentID,
+                  PartnerID = partners.Single( p => p.Name == "Partner 1").PartnerID,
                   Instructors = new List<Instructor>() 
                 },
                 new Course {CourseID = 4022, Title = "Microeconomics", Credits = 3,
                   DepartmentID = departments.Single( s => s.Name == "Economics").DepartmentID,
+                  PartnerID = partners.Single( p => p.Name == "Partner 1").PartnerID,
                   Instructors = new List<Instructor>() 
                 },
                 new Course {CourseID = 4041, Title = "Macroeconomics", Credits = 3,
+                  PartnerID = partners.Single( p => p.Name == "Partner 1").PartnerID,
                   DepartmentID = departments.Single( s => s.Name == "Economics").DepartmentID,
                   Instructors = new List<Instructor>() 
                 },
                 new Course {CourseID = 1045, Title = "Calculus",       Credits = 4,
+                  PartnerID = partners.Single( p => p.Name == "Partner 1").PartnerID,
                   DepartmentID = departments.Single( s => s.Name == "Mathematics").DepartmentID,
                   Instructors = new List<Instructor>() 
                 },
                 new Course {CourseID = 3141, Title = "Trigonometry",   Credits = 4,
+                  PartnerID = partners.Single( p => p.Name == "Partner 1").PartnerID,
                   DepartmentID = departments.Single( s => s.Name == "Mathematics").DepartmentID,
                   Instructors = new List<Instructor>() 
                 },
                 new Course {CourseID = 2021, Title = "Composition",    Credits = 3,
+                  PartnerID = partners.Single( p => p.Name == "Partner 1").PartnerID,
                   DepartmentID = departments.Single( s => s.Name == "English").DepartmentID,
                   Instructors = new List<Instructor>() 
                 },
                 new Course {CourseID = 2042, Title = "Literature",     Credits = 4,
+                  PartnerID = partners.Single( p => p.Name == "Partner 1").PartnerID,
                   DepartmentID = departments.Single( s => s.Name == "English").DepartmentID,
                   Instructors = new List<Instructor>() 
                 },
