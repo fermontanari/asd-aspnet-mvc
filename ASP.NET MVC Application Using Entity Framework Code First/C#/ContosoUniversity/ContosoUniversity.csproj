@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <ApplicationInsightsResourceId>/subscriptions/aeb4ae60-b7cb-4f3d-966d-fa43b6607f30/resourcegroups/Default-ApplicationInsights-CentralUS/providers/microsoft.insights/components/ContosoUniversity</ApplicationInsightsResourceId>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -165,9 +166,9 @@
     <Compile Include="Migrations\201411022351064_Inheritance.Designer.cs">
       <DependentUpon>201411022351064_Inheritance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707140048287_partner.cs" />
-    <Compile Include="Migrations\201707140048287_partner.Designer.cs">
-      <DependentUpon>201707140048287_partner.cs</DependentUpon>
+    <Compile Include="Migrations\201707191218278_partners.cs" />
+    <Compile Include="Migrations\201707191218278_partners.Designer.cs">
+      <DependentUpon>201707191218278_partners.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
@@ -276,8 +277,8 @@
     <EmbeddedResource Include="Migrations\201411022351064_Inheritance.resx">
       <DependentUpon>201411022351064_Inheritance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707140048287_partner.resx">
-      <DependentUpon>201707140048287_partner.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707191218278_partners.resx">
+      <DependentUpon>201707191218278_partners.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
